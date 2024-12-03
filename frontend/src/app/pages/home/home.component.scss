@@ -1,0 +1,14 @@
+.message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;  /* Οριζόντια στο κέντρο */
+    align-items: center;     /* Κάθετα στο κέντρο */
+    background-color: #555B6E;
+    color: white;            /* Χρώμα κειμένου */
+    font-size: 2rem;         /* Μέγεθος γραμματοσειράς */
+    font-weight: bold;
+  }

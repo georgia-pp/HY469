@@ -1,22 +1,90 @@
 <!-- START: menu navbar. Delete this code in order to remove the menu -->
 <div>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
-    <a class="navbar-brand" href="#">Homepage</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="item-shop">Item Shop</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="tasks">Task List</a>
-        </li>
+  <button *ngIf="showButton" class="menu-button" (click)="toggleMenu()" cdkDrag>
+    <div class="line red"></div>
+    <div class="line blue"></div>
+    <div class="line green"></div>
+
+    <div *ngIf="menuOpen" class="menu-options">
+      <button class="menu-option" (click)="open_calendar()">Calendar</button>
+      <button class="menu-option" (click)="open_clock()">Clock</button>
+      <button class="menu-option" (click)="open_notes()">Notes</button>
+      <button class="menu-option" (click)="open_messages()">Messages</button>
+      <button class="menu-option" (click)="open_calculator()">Calculator</button>
+      <button class="menu-option" (click)="open_docviewer()">Document viewer</button>
+      <button class="menu-option" (click)="open_pictures()">Pictures</button>
+      <button class="menu-option" (click)="open_settings()">Settings</button>
+      <button class="menu-option" (click)="relax_mode()">Relax mode</button>
+    </div>
+  </button>
+
+  <div *ngIf="calendarOpen" class="schedule-container" cdkDrag>
+    <h3>Today's Schedule</h3>
+    <button class="minimise-button" (click)="toggleCalendar()">&#8211;</button>
+    <div class="week-days-container">
+      <div class="day" *ngFor="let day of daysOfWeek">
+        <div class="day_name">{{ day.name }}</div>
+        <div class="day_num">{{ day.num }}</div>
+      </div>
+    </div>
+    <div class="week-days-container">
+      <h4>Tasks</h4>
+      <ul class="schedule-list">
+        <div class="task-container">
+          <h3>Meeting</h3>
+          <p>You have meeting at room K218, with <br>
+            Peter W.</p>
+        </div>
+        <div class="task-container">
+          <h3>Call Doctor</h3>
+          <p>Call Emily’s doctor to book un <br>
+            appointment for the 15th of November</p>
+        </div>
       </ul>
     </div>
-  </nav>
+  </div>
+
+  <div *ngIf="!showCalendar" class="icon" (click)="toggleCalendar()" cdkDrag>
+    📅
+  </div>
+
+  <!-- Messages Container -->
+  <div *ngIf="messagesOpen" class="messages-container" cdkDrag>
+    <button class="minimise-button" (click)="toggleMessage()">&#8211;</button>
+    <div class="week-days-container">
+    <h3>Messages</h3>
+
+    <div class="message">
+      <h3>Tomas Heath</h3>
+          <p>Yes, please · 2:34pm</p>
+    </div>
+
+    <div class="message">
+      <h3>Tomas Heath</h3>
+          <p>Yes, please · 2:34pm</p>
+    </div>
+    <div class="message">
+      <h3>Tomas Heath</h3>
+          <p>Yes, please · 2:34pm</p>
+    </div>
+    <div class="message">
+      <h3>Tomas Heath</h3>
+          <p>Yes, please · 2:34pm</p>
+    </div>
+  </div>
+
+  <div *ngIf="!showMessage" class="icon" (click)="toggleMessage()" cdkDrag>
+    💬
+  </div>
+
+  <!-- Clock Container -->
+  <div *ngIf="clockOpen" class="clock-container" cdkDrag>
+    <div class="clock-face">
+      <div class="hand hour" [style.transform]="hourTransform"></div>
+      <div class="hand minute" [style.transform]="minuteTransform"></div>
+      <div class="hand second" [style.transform]="secondTransform"></div>
+    </div>
+  </div>
 </div>
 <!-- END: menu navbar. Delete this code in order to remove the menu -->
 <router-outlet></router-outlet>

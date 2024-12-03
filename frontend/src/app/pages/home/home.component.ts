@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() { }
-
+  showMessage: boolean = true;
+  ngOnInit() {
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
+  }
 }
