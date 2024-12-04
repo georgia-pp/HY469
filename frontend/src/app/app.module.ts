@@ -10,6 +10,11 @@ import { environment } from 'src/environments/environment';
 import { ItemShopComponent } from './pages/item-shop/item-shop.component';
 import { ItemPreviewComponent } from './pages/item-shop/item-preview/item-preview.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PhoneComponent } from './pages/phone/phone.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
@@ -18,14 +23,17 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     TasksComponent,
     ItemShopComponent,
     ItemPreviewComponent,
-    HomeComponent
+    HomeComponent,
+    PhoneComponent
   ],
   imports: [
     SocketIoModule.forRoot(socketIoConfig),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    MatTabsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
