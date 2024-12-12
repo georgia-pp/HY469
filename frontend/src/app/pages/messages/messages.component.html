@@ -1,0 +1,28 @@
+<div *ngIf="messagesOpen" class="messages-container" cdkDrag>
+    <button class="minimise-button" (click)="toggleMessage()">&#8211;</button>
+    <div class="message-list">
+      <h3>Messages</h3>
+
+      <div class="message">
+        <h3>Tomas Heath</h3>
+        <p>Yes, please · 2:34pm</p>
+      </div>
+
+      <div class="message">
+        <h3>Tomas Heath</h3>
+        <p>Yes, please · 2:34pm</p>
+      </div>
+      <div class="message">
+        <h3>Tomas Heath</h3>
+        <p>Yes, please · 2:34pm</p>
+      </div>
+      <div class="message">
+        <h3>Tomas Heath</h3>
+        <p>Yes, please · 2:34pm</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!showMessage" class="icon" (click)="toggleMessage()" cdkDrag>
+    💬
+  </div>

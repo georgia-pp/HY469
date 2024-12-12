@@ -21,6 +21,8 @@ export class AppComponent {
   picturesOpen: boolean = false;
   settingsOpen: boolean = false;
   relaxMode: boolean = false;
+  alarmOpen: boolean = false;
+  timerOpen: boolean = false;
   hourTransform = 'rotate(0deg)';
   minuteTransform = 'rotate(0deg)';
   secondTransform = 'rotate(0deg)';
@@ -68,6 +70,8 @@ export class AppComponent {
   }
   open_clock() {
     this.clockOpen = !this.clockOpen;
+    this.alarmOpen = !this.alarmOpen;
+    this.timerOpen = !this.timerOpen;
 
     if (this.clockOpen) {
       this.startClock();
