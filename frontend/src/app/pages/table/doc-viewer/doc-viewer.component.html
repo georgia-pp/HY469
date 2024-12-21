@@ -1,0 +1,10 @@
+<div class="document-viewer">
+    <h2>Document Viewer</h2>
+    <div class="documents-grid">
+      <div class="document" *ngFor="let doc of documents">
+        <img [src]="doc.image" alt="{{ doc.title }}" />
+        <p>{{ doc.title }}</p>
+      </div>
+    </div>
+  </div>
+  

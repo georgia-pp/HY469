@@ -1,0 +1,15 @@
+<h1>[ Notes ]</h1>
+<div class="header">
+    <button class="icon-button">☰</button> 
+    <button class="icon-button">🔍</button> 
+    <button class="icon-button">⋮</button> 
+</div>
+
+<div class="notes-container">
+  <div class="note" *ngFor="let note of notes">
+    <h2>{{ note.title }}</h2>
+    <p *ngFor="let line of note.content">{{ line }}</p>
+  </div>
+</div>
+
+<button class="add-note" aria-label="Add note">➕</button> <!-- Add Icon -->

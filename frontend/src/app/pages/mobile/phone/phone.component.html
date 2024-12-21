@@ -1,0 +1,20 @@
+<div>
+    <app-mobile-home *ngIf="homeOpen"></app-mobile-home>
+    <app-mobile-clock *ngIf="clockOpen"></app-mobile-clock>
+    <app-mobile-tasks *ngIf="tasksOpen"></app-mobile-tasks>
+    <app-mobile-notes *ngIf="notesOpen"></app-mobile-notes>
+    <app-mobile-messages *ngIf="messagesOpen"></app-mobile-messages>
+    
+    <div class="menu-bar">
+        <button (click)="toggleHome()">Home</button>
+        <button (click)="toggleClock()">Clock</button>
+        <button (click)="toggleTasks()">Tasks</button>
+        <button (click)="toggleNotes()">Notes</button>
+        <button (click)="toggleMessages()">Messages</button>
+    </div>
+</div>
+
+<!--<div class="tmp" (click)="lala()"></div>
+
+
+<h1>it works! mobile</h1>-->

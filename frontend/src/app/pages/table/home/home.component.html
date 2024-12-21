@@ -1,0 +1,32 @@
+<div *ngIf="showMessage" class="message">
+  <h1>Welcome, Sir!<br>Let's start your day</h1>
+</div>
+
+<button *ngIf="showButton" class="menu-button" (click)="toggleMenu()" cdkDrag>
+  <div class="line red"></div>
+  <div class="line blue"></div>
+  <div class="line green"></div>
+
+  <div *ngIf="menuOpen" class="menu-options">
+    <button class="menu-option" (click)="open_calendar()">Calendar</button>
+    <button class="menu-option" (click)="open_clock()">Clock</button>
+    <button class="menu-option" (click)="open_notes()">Notes</button>
+    <button class="menu-option" (click)="open_messages()">Messages</button>
+    <button class="menu-option" (click)="open_calculator()">Calculator</button>
+    <button class="menu-option" (click)="open_docViewer()">Document viewer</button>
+    <button class="menu-option" (click)="open_files()">My files</button>
+    <button class="menu-option" (click)="open_setting()">Settings</button>
+    <button class="menu-option" (click)="open_relax()">Relax mode</button>
+  </div>
+</button>
+
+<app-calendar *ngIf="calendarOpen"></app-calendar>
+<app-clock *ngIf="clockOpen"></app-clock>
+<app-notes *ngIf="notesOpen"></app-notes>
+<app-messages *ngIf="messagesOpen"></app-messages>
+<app-calculator *ngIf="calculatorOpen"></app-calculator>
+<app-doc-viewer *ngIf="docViewerOpen"></app-doc-viewer>
+<app-files *ngIf="filesOpen"></app-files>
+<app-settings *ngIf="settingsOpen"></app-settings>
+<app-notes *ngIf="notesOpen"></app-notes>
+<app-relax *ngIf="relaxOpen"></app-relax>

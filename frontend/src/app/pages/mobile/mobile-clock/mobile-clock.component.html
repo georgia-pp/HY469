@@ -1,0 +1,41 @@
+<h1>[ Clock ]</h1>
+<div class="clock-container" cdkDrag>
+    <!-- Clock Section -->
+    <div *ngIf="activeTab === 'clock'" class="clock">
+        <div class="circle">
+            <div class="hand hour"></div>
+            <div class="hand minute"></div>
+            <div class="hand second"></div>
+        </div>
+    </div>
+
+    <!-- Alarm Section -->
+    <div *ngIf="activeTab === 'alarm'" class="alarms">
+        <div *ngFor="let alarm of alarms" class="alarm">
+            <span>{{ alarm.time }}</span>
+            <label class="switch">
+                <input type="checkbox" [(ngModel)]="alarm.enabled">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Timer Section -->
+    <div *ngIf="activeTab === 'timer'" class="timer">
+        <div class="circle">
+            <h1>{{ timer | date:'HH:mm:ss' }}</h1>
+        </div>
+        <div class="controls">
+            <button (click)="startTimer()">Start</button>
+            <button (click)="pauseTimer()">Pause</button>
+            <button (click)="resetTimer()">Reset</button>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <button [class.active]="activeTab === 'clock'" (click)="setTab('clock')">Clock</button>
+        <button [class.active]="activeTab === 'alarm'" (click)="setTab('alarm')">Alarm</button>
+        <button [class.active]="activeTab === 'timer'" (click)="setTab('timer')">Timer</button>
+      </div>
+</div>

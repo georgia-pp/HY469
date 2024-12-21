@@ -1,0 +1,33 @@
+<div class="chat-container">
+
+  <header>
+    <button class="back-button">&larr;</button>
+    <h1>[ Messages ]</h1>
+  </header>
+  <div class="chat-messages">
+    <div class="contact-info">
+      <img src="assets/images/user1.png" alt="Tomas Heath" class="avatar" />
+      <div>
+        <h4>Tomas Heath</h4>
+        <p>(212) 658-3916</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div *ngFor="let msg of messages" [ngClass]="{'sent': msg.sent, 'received': !msg.sent}">
+      <p>{{ msg.text }}</p>
+      <span class="timestamp">{{ msg.timestamp }}</span>
+    </div>
+  
+  <div class="chat-input">
+    <button class="icon-button">
+      <img src="assets/icons/microphone.svg" alt="Voice" />
+    </button>
+    <input type="text" placeholder="Text..." [(ngModel)]="newMessage" />
+    <button class="icon-button" (click)="sendMessage()">
+      <img src="assets/icons/send.svg" alt="Send" />
+    </button>
+  </div>
+</div>
+</div>

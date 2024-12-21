@@ -1,0 +1,37 @@
+<div class="task-container">
+  <!-- Header -->
+  <header>
+    <button class="back-button">&larr;</button>
+    <h2>[ Tasks ]</h2>
+    <button class="add-task-button">+ Add task</button>
+  </header>
+
+  <!-- Calendar -->
+  <div class="calendar">
+    <div class="day" *ngFor="let day of week">
+      <span>{{ day.short }}</span>
+      <span [ngClass]="{'selected': day.selected}">{{ day.date }}</span>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+    <div class="event" *ngFor="let task of tasks">
+      <div class="time-marker"></div>
+      <div class="task-card">
+        <h3>{{ task.title }}</h3>
+        <p class="time">{{ task.time }}</p>
+        <p class="description">{{ task.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="bottom-nav">
+    <button><img src="assets/icons/home.svg" alt="Home" /></button>
+    <button><img src="assets/icons/alarm.svg" alt="Alarm" /></button>
+    <button><img src="assets/icons/checklist.svg" alt="Checklist" /></button>
+    <button><img src="assets/icons/documents.svg" alt="Documents" /></button>
+    <button><img src="assets/icons/messages.svg" alt="Messages" /></button>
+  </nav>
+</div>

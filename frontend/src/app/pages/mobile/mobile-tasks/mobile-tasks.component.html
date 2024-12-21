@@ -1,0 +1,44 @@
+<div *ngIf="tasksOpen">
+<h1>[ Tasks ]</h1>
+<h2>You have 38 tasks<br>
+    for today!</h2>
+
+
+    <div class="search-bar">
+        <span class="icon">🔍</span>
+        <input type="search" name="query" placeholder="Search..." required>
+    </div>
+
+
+<div class="container">
+    <div class="categories">
+        My reminders
+    </div>
+    <div class="categories">
+        My reminders
+    </div>
+    <div class="categories">
+        My reminders
+    </div>
+    <div class="categories">
+        My reminders
+    </div>
+    <div class="categories">
+        My reminders
+    </div>
+</div>
+
+<h4>Today’s Tasks</h4>
+<div class="task" (click)="toggleTask()">
+    <h3>Meeting</h3>
+    <p>Discussion with client <br>
+        for new project<br><br>
+        <b>9:30AM<br>
+            Room K218</b><br><br>
+        Progress
+    </p>
+    <progress id="file" value="32" max="100"></progress>
+</div>
+</div>
+
+<app-task-details *ngIf="detailsOpen"></app-task-details>
