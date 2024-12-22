@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -30,6 +30,8 @@ import { ConversationComponent } from './pages/mobile/mobile-messages/conversati
 import { TaskDetailsComponent } from './pages/mobile/mobile-tasks/task-details/task-details.component';
 import { NewTaskComponent } from './pages/mobile/mobile-tasks/new-task/new-task.component';
 import { NewNoteComponent } from './pages/mobile/mobile-notes/new-note/new-note.component';
+
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -67,7 +69,8 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     DragDropModule,
     //MatTabsModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

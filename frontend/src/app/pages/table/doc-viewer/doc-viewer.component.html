@@ -1,10 +1,13 @@
-<div class="document-viewer">
-    <h2>Document Viewer</h2>
-    <div class="documents-grid">
-      <div class="document" *ngFor="let doc of documents">
-        <img [src]="doc.image" alt="{{ doc.title }}" />
-        <p>{{ doc.title }}</p>
-      </div>
+<div class="document-viewer" *ngIf="docOpen" (dblclick)="toggleDoc()" cdkDrag>
+  <h2>Document Viewer</h2>
+  <div class="documents-grid">
+    <div class="document" *ngFor="let doc of documents">
+      <img [src]="doc.image" alt="{{ doc.title }}" />
+      <p>{{ doc.title }}</p>
     </div>
   </div>
-  
+</div>
+
+<div *ngIf="!showDoc" class="icon" (click)="toggleDoc()" cdkDrag>
+  <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#e8eaed"><path d="M319.33-246.67h321.34v-66.66H319.33v66.66Zm0-166.66h321.34V-480H319.33v66.67ZM226.67-80q-27 0-46.84-19.83Q160-119.67 160-146.67v-666.66q0-27 19.83-46.84Q199.67-880 226.67-880H574l226 226v507.33q0 27-19.83 46.84Q760.33-80 733.33-80H226.67Zm314-542.67v-190.66h-314v666.66h506.66v-476H540.67Zm-314-190.66v190.66-190.66 666.66-666.66Z"/></svg>
+</div>

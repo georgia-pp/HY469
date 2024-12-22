@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./doc-viewer.component.scss']
 })
 export class DocViewerComponent {
+  docOpen: boolean = true;
+  showDoc: boolean = true;
+
+  toggleDoc() {
+    this.showDoc = !this.showDoc;
+    this.docOpen = !this.docOpen;
+  }
+
   documents = [
     {
       title: 'Corporate bylaws',
@@ -14,10 +22,6 @@ export class DocViewerComponent {
     {
       title: '2016 Analysis',
       image: 'assets/images/document2.png' // Αντικατάστησε με το σωστό path
-    },
-    {
-      title: 'Sample Document',
-      image: 'assets/images/document3.png' // Αντικατάστησε με το σωστό path
     }
   ];
 }

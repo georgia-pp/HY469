@@ -1,0 +1,53 @@
+.files-viewer {
+    text-align: center;
+    padding: 20px;
+    background-color: #89B0AE;
+    border-radius: 10px;
+    width: fit-content;
+  }
+  
+  .files-grid {
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+  
+  .files {
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .files img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .files p {
+    margin: 0;
+    font-size: 16px;
+    color: #3a3a3a;
+  }
+  
+  .icon {
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+    background-color: #FFD6BA;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  .icon:hover {
+    background-color: #FFB684;
+  }

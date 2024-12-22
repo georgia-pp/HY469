@@ -8,6 +8,14 @@ import { Component } from '@angular/core';
 export class ClockComponent {
   activeTab: string = 'clock'; // Default tab
 
+  clockOpen: boolean = true;
+  showClock: boolean = true;
+
+  toggleClock() {
+    this.showClock = !this.showClock;
+    this.clockOpen = !this.clockOpen;
+  }
+
   // Alarm Data
   alarms = [
     { time: '5:00 AM', enabled: false },

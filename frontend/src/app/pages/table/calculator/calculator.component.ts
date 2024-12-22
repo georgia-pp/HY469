@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent {
+    calculatorOpen: boolean = true;
+  showCalculator: boolean = true;
 
+  toggleCalculator() {
+    this.showCalculator = !this.showCalculator;
+    this.calculatorOpen = !this.calculatorOpen;
+  }
   
   display: string = '';
 

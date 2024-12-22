@@ -1,5 +1,4 @@
-<div class="clock-container" cdkDrag>
-    <!-- Clock Section -->
+<div *ngIf="clockOpen" class="clock-container" (dblclick)="toggleClock()" cdkDrag>
     <div *ngIf="activeTab === 'clock'" class="clock">
         <div class="circle">
             <div class="hand hour"></div>
@@ -8,7 +7,6 @@
         </div>
     </div>
 
-    <!-- Alarm Section -->
     <div *ngIf="activeTab === 'alarm'" class="alarms">
         <div *ngFor="let alarm of alarms" class="alarm">
             <span>{{ alarm.time }}</span>
@@ -17,24 +15,40 @@
                 <span class="slider round"></span>
             </label>
         </div>
+        <div class="add-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF">
+                <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+            </svg>
+        </div>
     </div>
 
-    <!-- Timer Section -->
     <div *ngIf="activeTab === 'timer'" class="timer">
         <div class="circle">
             <h1>{{ timer | date:'HH:mm:ss' }}</h1>
         </div>
         <div class="controls">
-            <button (click)="startTimer()">Start</button>
-            <button (click)="pauseTimer()">Pause</button>
-            <button (click)="resetTimer()">Reset</button>
+            <div (click)="startTimer()" class="option-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed"><path d="M320-202v-560l440 280-440 280Zm66.67-280Zm0 158.67L636-482 386.67-640.67v317.34Z"/></svg>
+            </div>
+            <div (click)="pauseTimer()" class="option-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed"><path d="M523.33-200v-560H760v560H523.33ZM200-200v-560h236.67v560H200Zm390-66.67h103.33v-426.66H590v426.66Zm-323.33 0H370v-426.66H266.67v426.66Zm0-426.66v426.66-426.66Zm323.33 0v426.66-426.66Z"/></svg>
+            </div>
+            <div (click)="resetTimer()" class="option-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed"><path d="M480-80q-75 0-140.5-28.17-65.5-28.16-114.33-77-48.84-48.83-77-114.33Q120-365 120-440h66.67q0 122.33 85.5 207.83 85.5 85.5 207.83 85.5 122.33 0 207.83-85.5 85.5-85.5 85.5-207.83 0-122.33-83.83-207.83-83.83-85.5-206.17-85.5H466L535.33-664l-46 47.33L338-768l151.33-151.33 46 46.66L462.67-800H480q75 0 140.5 28.17 65.5 28.16 114.33 77 48.84 48.83 77 114.33Q840-515 840-440t-28.17 140.5q-28.16 65.5-77 114.33-48.83 48.84-114.33 77Q555-80 480-80Z"/></svg>
+            </div>
         </div>
     </div>
 
-    <!-- Navbar -->
     <div class="navbar">
         <button [class.active]="activeTab === 'clock'" (click)="setTab('clock')">Clock</button>
         <button [class.active]="activeTab === 'alarm'" (click)="setTab('alarm')">Alarm</button>
         <button [class.active]="activeTab === 'timer'" (click)="setTab('timer')">Timer</button>
-      </div>
+    </div>
+</div>
+
+<div *ngIf="!showClock" class="icon" (click)="toggleClock()" cdkDrag>
+    <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#FFFFFF">
+        <path
+            d="M479.33-81.33q-74.33 0-139.83-28.17-65.5-28.17-114-76.67t-77-114Q120-365.67 120-440.49t28.5-140.17q28.5-65.34 77-114.17 48.5-48.84 114-77Q405-800 479.33-800q74.34 0 139.84 28.17 65.5 28.16 114.33 77 48.83 48.83 77 114.17 28.17 65.35 28.17 140.17T810.5-300.17q-28.17 65.5-77 114T619.17-109.5q-65.5 28.17-139.84 28.17Zm0-358Zm118 163.33L644-322.67 514.67-452v-188H448v214.67L597.33-276Zm-380-590.67L264-820 98-658l-46.67-46.67 166-162Zm524 0 166 162L860.67-658l-166-162 46.66-46.67ZM479.36-148q122.31 0 207.47-85.19Q772-318.39 772-440.7q0-122.3-85.19-207.47-85.2-85.16-207.51-85.16-122.3 0-207.47 85.19-85.16 85.2-85.16 207.5 0 122.31 85.19 207.47Q357.06-148 479.36-148Z" />
+    </svg>
 </div>
