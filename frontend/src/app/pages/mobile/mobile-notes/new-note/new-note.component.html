@@ -1,10 +1,19 @@
-<header>
-    <button class="back-button">&larr;</button>
-    <h1>[ New note ]</h1>
-  </header>
+<div class="new-note-form">
+  <h1>[ New Note ]</h1>
 
-  <h4>Category</h4>
+  <label for="category">Category</label>
+  <div class="categories">
+    <button class="category-button">Work</button>
+    <button class="category-button">Personal</button>
+    <button class="category-button">Project A</button>
+  </div>
 
-  <h4>Note’s Title</h4>
+  <label for="title">Note's Title</label>
+  <input type="text" id="title" placeholder="Title" />
 
-  <h4>Context</h4>
+  <label for="context">Context</label>
+  <textarea id="context" placeholder="Text..."></textarea>
+
+
+  <button class="add-note-button">Add Note</button>
+</div>

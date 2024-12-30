@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent {
+  detailsOpen: boolean = false;
+  newTaskOpen: boolean = true;
 
+  back() {
+    this.detailsOpen = true;
+    this.newTaskOpen = false;
+  }
 }

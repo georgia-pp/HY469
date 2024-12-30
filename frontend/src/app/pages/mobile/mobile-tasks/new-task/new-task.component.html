@@ -1,10 +1,29 @@
-<header>
-    <button class="back-button">&larr;</button>
-    <h1>[ New task ]</h1>
-  </header>
+<div class="new-task-form">
+  <h1>[ New Task ]</h1>
 
-  <h4>Category</h4>
+  <label for="category">Category</label>
+  <div class="categories">
+    <button class="category-button">Work</button>
+    <button class="category-button">Personal</button>
+    <button class="category-button">Project A</button>
+  </div>
 
-  <h4>Task’s Title</h4>
+  <label for="title">Task's Title</label>
+  <input type="text" id="title" placeholder="Title" />
 
-  <h4>Context</h4>
+  <label for="context">Context</label>
+  <textarea id="context" placeholder="Text..."></textarea>
+
+  <div class="date-time">
+    <div class="date-picker">
+      <i class="icon">📅</i>
+      <span>Fri 15, November, 2024</span>
+    </div>
+    <div class="time-picker">
+      <i class="icon">⏰</i>
+      <span>09:00am</span>
+    </div>
+  </div>
+
+  <button class="add-task-button">Add Task</button>
+</div>

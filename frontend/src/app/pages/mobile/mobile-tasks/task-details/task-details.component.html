@@ -1,9 +1,9 @@
-<div class="task-container">
+<div class="task-container" *ngIf="detailsOpen">
   <!-- Header -->
   <header>
-    <button class="back-button">&larr;</button>
+    <button class="back-button" (click)="back()">&larr;</button>
     <h2>[ Tasks ]</h2>
-    <button class="add-task-button">+ Add task</button>
+    <button class="add-task-button" (click)="newTask()">+ Add task</button>
   </header>
 
   <!-- Calendar -->
@@ -35,3 +35,6 @@
     <button><img src="assets/icons/messages.svg" alt="Messages" /></button>
   </nav>
 </div>
+
+<app-mobile-tasks *ngIf="tasksOpen"></app-mobile-tasks>
+<app-new-task *ngIf="newTaskOpen"></app-new-task>

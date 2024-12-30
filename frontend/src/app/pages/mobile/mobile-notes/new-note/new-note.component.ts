@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-note.component.scss']
 })
 export class NewNoteComponent {
+  notesOpen: boolean = false;
+  newNotesOpen: boolean = true;
 
+  back() {
+    this.notesOpen = true;
+    this.newNotesOpen = false;
+  }
 }

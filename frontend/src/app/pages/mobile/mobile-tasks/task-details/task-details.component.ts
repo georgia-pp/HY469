@@ -6,6 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-details.component.scss']
 })
 export class TaskDetailsComponent {
+  tasksOpen: boolean = false;
+  detailsOpen: boolean = true;
+  newTaskOpen: boolean = false;
+
+  newTask() {
+    this.newTaskOpen = true;
+    this.detailsOpen = false;
+  }
+
+  back() {
+    this.tasksOpen = true;
+    this.detailsOpen = false;
+  }
+  
   week = [
     { short: 'Thu', date: 17, selected: false },
     { short: 'Fri', date: 18, selected: true },

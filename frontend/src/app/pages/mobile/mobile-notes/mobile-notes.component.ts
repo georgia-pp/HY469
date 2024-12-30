@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./mobile-notes.component.scss']
 })
 export class MobileNotesComponent {
+  notesOpen: boolean = true;
+  newNotesOpen: boolean = false;
+
+  newNotes() {
+    this.notesOpen = false;
+    this.newNotesOpen = true;
+  }
+
   notes = [
     {
       title: 'Project A',
