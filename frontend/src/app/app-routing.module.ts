@@ -10,8 +10,7 @@ import { CalculatorComponent } from './pages/table/calculator/calculator.compone
 import { DocViewerComponent } from './pages/table/doc-viewer/doc-viewer.component';
 import { FilesComponent } from './pages/table/files/files.component';
 import { SettingsComponent } from './pages/table/settings/settings.component';
-import { RelaxComponent } from './pages/table/relax/relax.component';
-import { WallComponent } from './pages/wall/wall/wall.component';
+import { WallComponent } from './pages/wall/wall.component';
 
 
 const routes: Routes = [

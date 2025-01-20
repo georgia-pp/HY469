@@ -1,0 +1,25 @@
+.calendar-container{
+    width:870px;
+    height:170px;
+    background-color: #f8f9fa;
+    margin:5px;
+    margin-right:0px;
+    padding:10px;
+    border-left: 4px solid #89B0AE;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.completed-remaining{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:16px;
+}
+
+.completed-remaining div:nth-child(1){
+    margin-right:8px;
+}
+.completed-remaining div:nth-child(2){
+    margin-left:8px;
+}

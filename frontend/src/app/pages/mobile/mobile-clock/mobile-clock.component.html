@@ -1,6 +1,5 @@
 <h1>[ Clock ]</h1>
 <div class="clock-container" cdkDrag>
-    <!-- Clock Section -->
     <div *ngIf="activeTab === 'clock'" class="clock">
         <div class="circle">
             <div class="hand hour"></div>
@@ -9,7 +8,6 @@
         </div>
     </div>
 
-    <!-- Alarm Section -->
     <div *ngIf="activeTab === 'alarm'" class="alarms">
         <div *ngFor="let alarm of alarms" class="alarm">
             <span>{{ alarm.time }}</span>
@@ -20,9 +18,9 @@
         </div>
     </div>
 
-    <!-- Timer Section -->
     <div *ngIf="activeTab === 'timer'" class="timer">
         <div class="circle">
+            <br>
             <h1>{{ timer | date:'HH:mm:ss' }}</h1>
         </div>
         <div class="controls">
@@ -32,10 +30,9 @@
         </div>
     </div>
 
-    <!-- Navbar -->
     <div class="navbar">
         <button [class.active]="activeTab === 'clock'" (click)="setTab('clock')">Clock</button>
         <button [class.active]="activeTab === 'alarm'" (click)="setTab('alarm')">Alarm</button>
         <button [class.active]="activeTab === 'timer'" (click)="setTab('timer')">Timer</button>
-      </div>
+    </div>
 </div>

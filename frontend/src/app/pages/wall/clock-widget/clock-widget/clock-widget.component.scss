@@ -1,0 +1,27 @@
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 0px;
+  height: 170px;
+  width: 350px;
+  color: #276967;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+.clock-display {
+  font-size: 60px;
+  ;
+  font-weight: bold;
+}
+
+.date-display {
+  font-size: 25px;
+  color: #89B0AE;
+}

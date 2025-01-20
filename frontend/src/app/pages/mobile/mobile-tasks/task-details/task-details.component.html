@@ -1,39 +1,36 @@
 <div class="task-container" *ngIf="detailsOpen">
-  <!-- Header -->
   <header>
-    <button class="back-button" (click)="back()">&larr;</button>
-    <h2>[ Tasks ]</h2>
+    <button class="back-button" (click)="back()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000">
+        <path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z" />
+      </svg>
+    </button>
     <button class="add-task-button" (click)="newTask()">+ Add task</button>
   </header>
 
-  <!-- Calendar -->
-  <div class="calendar">
-    <div class="day" *ngFor="let day of week">
-      <span>{{ day.short }}</span>
-      <span [ngClass]="{'selected': day.selected}">{{ day.date }}</span>
-    </div>
+  <br>
+
+  <div class="days">
+    <span *ngFor="let day of days" [class.active]="day.active">
+      {{ day.label }}
+      {{ day.date }}
+    </span>
   </div>
 
-  <!-- Timeline -->
+  <br><br>
+
   <div class="timeline">
     <div class="event" *ngFor="let task of tasks">
-      <div class="time-marker"></div>
-      <div class="task-card">
-        <h3>{{ task.title }}</h3>
-        <p class="time">{{ task.time }}</p>
-        <p class="description">{{ task.description }}</p>
+      <p>{{ task.taskTime }}</p>
+      <div class="task-card" [ngClass]="{'completed': task.completed}">
+        <div class="task-content">
+          <h3>{{ task.title }}</h3>
+          <p class="context">{{ task.context }}</p>
+        </div>
+        <input type="checkbox" [(ngModel)]="task.completed" (change)="toggleCompletion(task)" class="task-checkbox" />
       </div>
     </div>
   </div>
-
-  <!-- Navigation Bar -->
-  <nav class="bottom-nav">
-    <button><img src="assets/icons/home.svg" alt="Home" /></button>
-    <button><img src="assets/icons/alarm.svg" alt="Alarm" /></button>
-    <button><img src="assets/icons/checklist.svg" alt="Checklist" /></button>
-    <button><img src="assets/icons/documents.svg" alt="Documents" /></button>
-    <button><img src="assets/icons/messages.svg" alt="Messages" /></button>
-  </nav>
 </div>
 
 <app-mobile-tasks *ngIf="tasksOpen"></app-mobile-tasks>

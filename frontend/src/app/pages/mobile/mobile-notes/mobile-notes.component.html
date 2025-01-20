@@ -1,19 +1,22 @@
 <div *ngIf="notesOpen">
-<h1>[ Notes ]</h1>
-<div class="header">
-    <button class="icon-button">☰</button> 
-    <button class="icon-button">🔍</button> 
-    <button class="icon-button">⋮</button> 
-</div>
-
-<div class="notes-container">
-  <div class="note" *ngFor="let note of notes">
-    <h2>{{ note.title }}</h2>
-    <p *ngFor="let line of note.content">{{ line }}</p>
+  <h1>[ Notes ]</h1>
+  <div class="search-bar">
+    <span class="icon">🔍</span>
+    <input type="search" name="query" placeholder="Search..." required>
   </div>
-</div>
 
-<button class="add-note" (click)="newNotes()">➕</button>
+  <div class="notes-container">
+    <div class="note" *ngFor="let note of notes" [ngStyle]="{'background-color': note.color}">
+      <i class="fa fa-window-close pointer-cursor delete-note" (click)=" deleteNote(note)"></i>
+      <h2>{{ note.title }}</h2>
+      <p>{{ note.context }}</p>
+    </div>
+  </div>
+
+  <button class="add-note" (click)="newNotes()"><svg xmlns="http://www.w3.org/2000/svg" height="48px"
+      viewBox="0 -960 960 960" width="48px" fill="#000000">
+      <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z" />
+    </svg></button>
 </div>
 
 <app-new-note *ngIf="newNotesOpen"></app-new-note>

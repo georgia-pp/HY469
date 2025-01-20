@@ -1,19 +1,40 @@
-<div class="new-note-form">
-  <h1>[ New Note ]</h1>
+<form #noteForm="ngForm" (ngSubmit)="noteForm.form.valid && postNote(); noteForm.resetForm()" class="new-note-form"
+  *ngIf="newNoteOpen">
+  <header>
+    <button class="back-button" (click)="back()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000">
+        <path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z" />
+      </svg>
+    </button>
+    <h1>[ New Note ]</h1>
+  </header>
 
-  <label for="category">Category</label>
+  <label for="category">
+    <h4>Category</h4>
+  </label>
   <div class="categories">
-    <button class="category-button">Work</button>
-    <button class="category-button">Personal</button>
-    <button class="category-button">Project A</button>
+    <div class="category-button" [class.selected]="category === 'Work'" (click)="setCategory('Work')">
+      Work
+    </div>
+    <div class="category-button" [class.selected]="category === 'Personal'" (click)="setCategory('Personal')">
+      Personal
+    </div>
+    <div class="category-button" [class.selected]="category === 'Project A'" (click)="setCategory('Project A')">
+      Project A
+    </div>
   </div>
 
-  <label for="title">Note's Title</label>
-  <input type="text" id="title" placeholder="Title" />
+  <label for="noteTitleInput">
+    <h4>Note's Title</h4>
+  </label>
+  <input type="text" id="noteTitleInput" [(ngModel)]="title" name="inputtitle" placeholder="Title" />
 
-  <label for="context">Context</label>
-  <textarea id="context" placeholder="Text..."></textarea>
+  <label for="noteContextInput">
+    <h4>Context</h4>
+  </label>
+  <textarea class="form-control mt-1" id="noteContextInput" [(ngModel)]="context" name="inputcontext"></textarea>
 
+  <button type="submit" class="add-note-button">Add Note</button>
+</form>
 
-  <button class="add-note-button">Add Note</button>
-</div>
+<app-mobile-notes *ngIf="noteOpen"></app-mobile-notes>

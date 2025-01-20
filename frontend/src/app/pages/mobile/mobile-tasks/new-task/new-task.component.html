@@ -1,29 +1,50 @@
-<div class="new-task-form">
-  <h1>[ New Task ]</h1>
-
-  <label for="category">Category</label>
+<form #taskForm="ngForm" (ngSubmit)="taskForm.form.valid && postTask(); taskForm.resetForm()" class="new-task-form"
+  *ngIf="newTaskOpen">
+  <header>
+    <button class="back-button" (click)="back()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000">
+        <path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z" />
+      </svg>
+    </button>
+    <h1>[ New Task ]</h1>
+  </header>
+  
+  <label for="category">
+    <h4>Category</h4>
+  </label>
   <div class="categories">
-    <button class="category-button">Work</button>
-    <button class="category-button">Personal</button>
-    <button class="category-button">Project A</button>
-  </div>
-
-  <label for="title">Task's Title</label>
-  <input type="text" id="title" placeholder="Title" />
-
-  <label for="context">Context</label>
-  <textarea id="context" placeholder="Text..."></textarea>
-
-  <div class="date-time">
-    <div class="date-picker">
-      <i class="icon">📅</i>
-      <span>Fri 15, November, 2024</span>
+    <div class="category-button" [class.selected]="category === 'Work'" (click)="setCategory('Work')">
+      Work
     </div>
-    <div class="time-picker">
-      <i class="icon">⏰</i>
-      <span>09:00am</span>
+    <div class="category-button" [class.selected]="category === 'Personal'" (click)="setCategory('Personal')">
+      Personal
+    </div>
+    <div class="category-button" [class.selected]="category === 'Project A'" (click)="setCategory('Project A')">
+      Project A
     </div>
   </div>
 
-  <button class="add-task-button">Add Task</button>
-</div>
+  <label for="taskTitleInput">
+    <h4>Task's Title</h4>
+  </label>
+  <input type="text" id="taskTitleInput" [(ngModel)]="title" name="inputtitle" placeholder="Title" />
+
+  <label for="taskContextInput">
+    <h4>Context</h4>
+  </label>
+  <input class="form-control mt-1" id="taskContextInput" [(ngModel)]="context" name="inputcontext" />
+
+  <label for="taskDateInput">
+    <h4>Task Date</h4>
+  </label>
+  <input type="date" id="taskDateInput" [(ngModel)]="taskDate" name="taskDate" />
+
+  <label for="taskTimeInput">
+    <h4>Task Time</h4>
+  </label>
+  <input type="time" id="taskTimeInput" [(ngModel)]="taskTime" name="taskTime" />
+
+  <button type="submit" class="add-task-button">Add Task</button>
+</form>
+
+<app-task-details *ngIf="detailsOpen"></app-task-details>

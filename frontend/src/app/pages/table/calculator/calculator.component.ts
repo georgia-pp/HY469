@@ -6,29 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent {
-    calculatorOpen: boolean = true;
-  showCalculator: boolean = true;
-
-  toggleCalculator() {
-    this.showCalculator = !this.showCalculator;
-    this.calculatorOpen = !this.calculatorOpen;
-  }
-  
   display: string = '';
 
-    appendInput(value: string): void {
-        this.display += value;
-    }
+  appendInput(value: string): void {
+    this.display += value;
+  }
 
-    clear(): void {
-        this.display = '';
-    }
+  clear(): void {
+    this.display = '';
+  }
 
-    calculate(): void {
-        try {
-            this.display = eval(this.display);
-        } catch (e) {
-            this.display = 'Error';
-        }
+  calculate(): void {
+    try {
+      this.display = eval(this.display);
+    } catch (e) {
+      this.display = 'Error';
     }
+  }
 }

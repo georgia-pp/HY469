@@ -1,98 +1,78 @@
-import { Component, OnInit } from '@angular/core';
-import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  constructor(private socketsService: SocketsService){}
+export class HomeComponent {
+  transition: string = 'none';
+  currapp = -1;
+  apps: boolean[] = [false, false, false, false, false, false, false];
 
-  showMessage: boolean = true;
-  ngOnInit() {
-    setTimeout(() => {
-      this.showMessage = false;
-      this.showMessage = false;
-      this.showButton = true;
-    }, 3000);
+  isExtended: boolean[] = [false, false, false, false, false, false, false];
+  extendedWindow: boolean = false;
+  extended_apps: number[] = []
 
-    this.socketsService.subscribe("lala", (data:any)=>{
-      console.log(data);
-    })
-  }
-
+  koumpiamenu: boolean = true;
   showButton: boolean = false;
   menuOpen: boolean = false;
-  
-  calendarOpen: boolean = false;
-  clockOpen: boolean = false;
-  notesOpen: boolean = false;
-  messagesOpen: boolean = false;
-  calculatorOpen: boolean = false;
-  docViewerOpen: boolean = false;
-  filesOpen: boolean = false;
-  settingsOpen: boolean = false;
-  relaxOpen: boolean = false;
-  alarmOpen: boolean = false;
-  timerOpen: boolean = false;
-  hourTransform = 'rotate(0deg)';
-  minuteTransform = 'rotate(0deg)';
-  secondTransform = 'rotate(0deg)';
-  private intervalId: any;
+  showInside: boolean = false;
 
-  showCalendar: boolean = true;
-
-  daysOfWeek: { name: string, num: number }[] = [
-    { name: 'Thu', num: 5 },
-    { name: 'Fri', num: 6 },
-    { name: 'Sat', num: 7 },
-    { name: 'Sun', num: 8 },
-    { name: 'Mon', num: 9 },
-    { name: 'Tue', num: 10 },
-    { name: 'Wed', num: 11 }
-  ];
-
-  toggleCalendar() {
-    this.showCalendar = !this.showCalendar;
-    this.calendarOpen = !this.calendarOpen;
-  }
-
-  toggleMessage() {
-    this.showMessage = !this.showMessage;
-    this.messagesOpen = !this.messagesOpen;
-  }
-
-  // Η συνάρτηση toggleMenu() αλλάζει την κατάσταση του menuOpen
-  toggleMenu() {
+  toggleMenu(): void {
+    this.transition = "all 0.6s ease";
     this.menuOpen = !this.menuOpen;
+    if (this.menuOpen) {
+      setTimeout(() => {
+        this.showInside = true;
+      }, 400);
+    }
+    else {
+      this.showInside = false;
+    }
+
+    setTimeout(() => {
+      this.transition = 'none';
+    }, 600);
   }
 
-  open_calendar() {
-    this.calendarOpen = !this.calendarOpen;
+
+  openApp(id: number): void {
+    this.koumpiamenu = false;
+    this.apps[id] = true;
+    this.currapp = id;
   }
-  open_clock() {
-    this.clockOpen = !this.clockOpen;
+
+  closeapp(): void {
+    this.apps[this.currapp] = false;
+    this.currapp = -1;
+    this.koumpiamenu = true;
   }
-  open_notes() {
-    this.notesOpen = !this.notesOpen;
+
+  closeExtended(app: number): void {
+    this.extended_apps = this.extended_apps.filter((a) => a !== app);
+    this.isExtended[app] = false;
+    if (this.extended_apps.length === 0) {
+      this.extendedWindow = false;
+    }
   }
-  open_messages() {
-    this.messagesOpen = !this.messagesOpen;
+
+  openExtended(): void {
+    if (this.currapp === -1) return;
+    this.isExtended[this.currapp] = true;
+    this.extended_apps.push(this.currapp);
+    this.extendedWindow = true;
+    this.closeapp();
   }
-  open_calculator() {
-    this.calculatorOpen = !this.calculatorOpen;
-  }
-  open_docViewer() {
-    this.docViewerOpen = !this.docViewerOpen;
-  }
-  open_files() {
-    this.filesOpen = !this.filesOpen;
-  }
-  open_setting() {
-    this.settingsOpen = !this.settingsOpen;
-  }
-  open_relax() {
-    this.relaxOpen = !this.relaxOpen;
+
+  getId(app: string): number {
+    if (app === "calculator") return 0;
+    else if (app === "calendar") return 1;
+    else if (app === "notes") return 2;
+    else if (app === "messages") return 3;
+    else if (app === "settings") return 4;
+    else if (app === "docviewer") return 5;
+    else if (app === "photos") return 6;
+    else return -1;
   }
 }

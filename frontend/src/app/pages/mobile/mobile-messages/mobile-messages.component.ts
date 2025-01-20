@@ -12,31 +12,31 @@ export class MobileMessagesComponent {
   messages = [
     {
       name: 'Tomas Heath',
-      avatar: 'assets/images/user1.png',
+      avatar: 'assets/user1.jpeg',
       message: 'Yes, Please',
       time: '2:34pm'
     },
     {
       name: 'Alaia Allison',
-      avatar: 'assets/images/user2.png',
+      avatar: 'assets/user2.jpg',
       message: 'Can We Add These...',
       time: '2:34pm'
     },
     {
       name: 'Sophia Welch',
-      avatar: 'assets/images/user3.png',
+      avatar: 'assets/user3.jpg',
       message: 'Thank You So...',
       time: '2:34pm'
     },
     {
       name: 'Erick French',
-      avatar: 'assets/images/user4.png',
+      avatar: 'assets/user4.jpg',
       message: 'I Prefer The Other...',
       time: '2:34pm'
     }
   ];
 
-  toggleChat(){
+  toggleChat() {
     this.messagesOpen = false;
     this.chatOpen = true;
   }

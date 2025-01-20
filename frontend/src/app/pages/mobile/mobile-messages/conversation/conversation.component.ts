@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./conversation.component.scss']
 })
 export class ConversationComponent {
+  convOpen: boolean = true;
+  messagesOpen: boolean = false;
+
+  back() {
+    this.messagesOpen = true;
+    this.convOpen = false;
+  }
+
   messages = [
     { text: 'What Can You Tell Me About Your Latest Product?', timestamp: '15 Nov, 2:37pm', sent: false },
     {
@@ -19,10 +27,4 @@ export class ConversationComponent {
 
   newMessage: string = '';
 
-  sendMessage() {
-    if (this.newMessage.trim()) {
-      this.messages.push({ text: this.newMessage, timestamp: 'Now', sent: true });
-      this.newMessage = '';
-    }
-  }
 }

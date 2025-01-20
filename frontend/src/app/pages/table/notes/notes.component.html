@@ -1,20 +1,28 @@
-<div class="notes-wrapper" cdkDrag>
-    <div class="sidebar">
-        <h3>Filter by Category</h3>
-        <button *ngFor="let category of categories" [ngStyle]="{'background-color': category.color}"
-            (click)="filterNotes(category.color)" [class.active]="activeCategory === category.color">
-            {{ category.name }}
-        </button>
-        <button class="reset" (click)="resetFilter()">Show All</button>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<div class="notes-container">
+    <div class="filter-area">
+        <label for="filter">Filter:</label>
+        <select id="filter" [(ngModel)]="filter">
+            <option value="all">All</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="project">Project A</option>
+        </select>
     </div>
 
-    <div class="content">
-        <h2>Notes</h2>
-        <div class="notes-container">
-            <div class="sticky-note" *ngFor="let note of filteredNotes" [ngStyle]="{'background-color': note.color}">
+    <div class="notes-display">
+        <div class="note" *ngFor="let note of categoryNotes" [ngStyle]="{'background-color': note.color}">
+            <div class="note-header">
                 <h4>{{ note.title }}</h4>
-                <p>{{ note.description }}</p>
+                <div class="note-actions">
+                    <button class="action-btn" [class.pinned]="note.pin"
+                        (click)="togglePin(note); $event.stopPropagation()">
+                        <i class="fas fa-thumbtack"></i>
+                    </button>
+                </div>
             </div>
+            <p>{{ note.context }}</p>
         </div>
     </div>
 </div>

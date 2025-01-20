@@ -8,7 +8,6 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './pages/table/home/home.component';
 import { PhoneComponent } from './pages/mobile/phone/phone.component';
-//import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarComponent } from './pages/table/calendar/calendar.component';
 import { ClockComponent } from './pages/table/clock/clock.component';
@@ -16,11 +15,10 @@ import { NotesComponent } from './pages/table/notes/notes.component';
 import { CalculatorComponent } from './pages/table/calculator/calculator.component';
 import { FilesComponent } from './pages/table/files/files.component';
 import { DocViewerComponent } from './pages/table/doc-viewer/doc-viewer.component';
-import { RelaxComponent } from './pages/table/relax/relax.component';
 import { SettingsComponent } from './pages/table/settings/settings.component';
 import { MessagesComponent } from './pages/table/messages/messages.component';
 import { FormsModule } from '@angular/forms';
-import { WallComponent } from './pages/wall/wall/wall.component';
+import { WallComponent } from './pages/wall/wall.component';
 import { MobileClockComponent } from './pages/mobile/mobile-clock/mobile-clock.component';
 import { MobileTasksComponent } from './pages/mobile/mobile-tasks/mobile-tasks.component';
 import { MobileMessagesComponent } from './pages/mobile/mobile-messages/mobile-messages.component';
@@ -32,8 +30,11 @@ import { NewTaskComponent } from './pages/mobile/mobile-tasks/new-task/new-task.
 import { NewNoteComponent } from './pages/mobile/mobile-notes/new-note/new-note.component';
 
 import { MatIconModule } from '@angular/material/icon';
-
-
+import { ClockWidgetComponent } from './pages/wall/clock-widget/clock-widget/clock-widget.component';
+import { MusicWidgetComponent } from './pages/wall/music-widget/music-widget.component';
+import { NotificationWidgetComponent } from './pages/wall/notification-widget/notification-widget/notification-widget.component';
+import { CalendarWidgetComponent } from './pages/wall/calendar-widget/calendar-widget/calendar-widget.component';
+import { PhotosComponent } from './pages/table/photos/photos.component';
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
@@ -47,7 +48,6 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     CalculatorComponent,
     FilesComponent,
     DocViewerComponent,
-    RelaxComponent,
     SettingsComponent,
     MessagesComponent,
     WallComponent,
@@ -59,7 +59,12 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     ConversationComponent,
     TaskDetailsComponent,
     NewTaskComponent,
-    NewNoteComponent
+    NewNoteComponent,
+    ClockWidgetComponent,
+    MusicWidgetComponent,
+    NotificationWidgetComponent,
+    CalendarWidgetComponent,
+    PhotosComponent
   ],
   imports: [
     SocketIoModule.forRoot(socketIoConfig),

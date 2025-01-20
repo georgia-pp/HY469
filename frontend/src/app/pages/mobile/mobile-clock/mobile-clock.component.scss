@@ -45,6 +45,10 @@ h1 {
   background-color: #89B0AE;
 }
 
+.circle h1 {
+  margin-left: 10px;
+}
+
 .hand {
   width: 30%;
   height: 2px;
@@ -54,6 +58,10 @@ h1 {
   left: 20%;
   transform-origin: 100%;
   transform: rotate(0deg);
+}
+
+.alarms {
+  margin-left: 100px;
 }
 
 .alarms .alarm {
@@ -116,7 +124,7 @@ input:checked+.slider:before {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #FFD6BA;
   color: white;
   cursor: pointer;
 }

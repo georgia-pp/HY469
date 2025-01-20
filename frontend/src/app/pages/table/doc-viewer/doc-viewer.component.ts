@@ -5,23 +5,24 @@ import { Component } from '@angular/core';
   templateUrl: './doc-viewer.component.html',
   styleUrls: ['./doc-viewer.component.scss']
 })
-export class DocViewerComponent {
-  docOpen: boolean = true;
-  showDoc: boolean = true;
-
-  toggleDoc() {
-    this.showDoc = !this.showDoc;
-    this.docOpen = !this.docOpen;
-  }
-
+export class DocViewerComponent { 
   documents = [
     {
-      title: 'Corporate bylaws',
-      image: 'assets/images/document1.png' // Αντικατάστησε με το σωστό path
+      title: 'hy469_project.pdf',
+      image: 'assets/images/document1.png' 
     },
     {
-      title: '2016 Analysis',
-      image: 'assets/images/document2.png' // Αντικατάστησε με το σωστό path
+      title: 'Angular_tutorial.pdf',
+      image: 'assets/images/document1.png' 
+    },
+    {
+      title: 'System_analysis.pdf',
+      image: 'assets/images/document2.png' 
+    },
+    {
+      title: 'data_stractures.pdf',
+      image: 'assets/images/document2.png' 
     }
+
   ];
 }

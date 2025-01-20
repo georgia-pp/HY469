@@ -1,0 +1,23 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<div class="notifications-container">
+    <div class="notification-preview" *ngIf="!showNotification">
+        <p class="notifications">Notifications:</p>
+        <div class="icons">
+            <div class="email-icon">
+                <i class="fas fa-envelope"></i>
+                <span class="number">{{unreadEmails}}</span>
+            </div>
+            <div class="message-icon">
+                <i class="fas fa-comment-dots"></i>
+                <span class="number">{{unreadMessages}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="notification" *ngIf="showNotification" [ngClass]="{'email': emailReceived, 'message':!emailReceived}">
+        <p class="title">New {{notification.type}} received:</p>
+        <p class="sender">{{notification.sender}}</p>
+        <p class="subject" *ngIf="emailReceived"> {{notification.subject}}</p>
+        <p class="content"> {{notification.content}} </p>
+    </div>
+</div>

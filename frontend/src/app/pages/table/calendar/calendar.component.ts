@@ -1,57 +1,75 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TaskModel } from 'src/app/global/models/tasks/task.model';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent {
-  calendarOpen: boolean = true;
-  showCalendar: boolean = true;
-
-  toggleCalendar() {
-    this.showCalendar = !this.showCalendar;
-    this.calendarOpen = !this.calendarOpen;
-  }
+export class CalendarComponent implements OnInit {
+  public tasks: TaskModel[] = [];
+  constructor(
+    private tasksService: TasksService,
+    private socketService: SocketsService
+  ) { }
 
   days = [
-    { label: 'Thu', date: 17, active: false },
-    { label: 'Fri', date: 18, active: true },
-    { label: 'Sat', date: 19, active: false },
-    { label: 'Sun', date: 20, active: false },
-    { label: 'Mon', date: 21, active: false },
-    { label: 'Tue', date: 22, active: false },
-    { label: 'Wed', date: 23, active: false }
+    { label: 'Sun', date: 19, active: false },
+    { label: 'Mon', date: 20, active: true },
+    { label: 'Tue', date: 21, active: false },
+    { label: 'Wed', date: 22, active: false },
+    { label: 'Thu', date: 23, active: false },
+    { label: 'Fri', date: 24, active: false },
+    { label: 'Sat', date: 25, active: false }
   ];
 
-  tasks = [
-    {
-      time: '9:30am',
-      title: 'Meeting',
-      description: 'You have a meeting at room K218, with Peter W.'
-    },
-    {
-      time: '9:30am',
-      title: 'Call Doctor',
-      description: "Call Emily's doctor to book an appointment for the 15th of November."
+  filter: 'all' | 'completed' | 'pending' = 'all';
+
+  ngOnInit(): void {
+    this.getAllTasks();
+
+    this.socketService.subscribe("tasks_update", (data: any) => {
+      this.getAllTasks();
+    });
+  }
+
+  private getAllTasks(): void {
+    this.tasksService.getAll().subscribe((result) => {
+      this.tasks = result;
+      this.sortTasks();
+    });
+  }
+
+  private sortTasks(): void {
+    this.tasks.sort((a, b) => {
+      const dateA = new Date(`${a.taskDate}T${a.taskTime}`);
+      const dateB = new Date(`${b.taskDate}T${b.taskTime}`);
+      return dateA.getTime() - dateB.getTime();
+    });
+  }
+
+  get filteredTasks(): TaskModel[] {
+    if (this.filter === 'completed') {
+      return this.tasks.filter(task => task.completed);
+    } else if (this.filter === 'pending') {
+      return this.tasks.filter(task => !task.completed);
     }
-  ];
-
-  progress = 25; // Example progress percentage
-
-  get progressOffset(): number {
-    const circumference = 2 * Math.PI * 45;
-    return circumference - (this.progress / 100) * circumference;
+    return this.tasks;
   }
 
-  navigate(direction: number): void {
-    console.log(`Navigating ${direction > 0 ? 'forward' : 'backward'}`);
-    // Implement navigation logic here
+  onTaskComplete(t: TaskModel) {
+    t.completed = !t.completed;
+    this.tasksService.update(t).subscribe(response => {
+      console.log('Task updated', response);
+    });
   }
+}
 
-  selectDay(day: any): void {
-    this.days.forEach(d => (d.active = false));
-    day.active = true;
-    console.log(`Selected day: ${day.label} ${day.date}`);
-  }
+export interface Task {
+  time: string;
+  title: string;
+  description: string;
+  completed: boolean;
 }

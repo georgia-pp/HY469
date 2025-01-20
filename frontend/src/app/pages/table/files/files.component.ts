@@ -17,11 +17,11 @@ export class FilesComponent {
   files = [
     {
       title: 'Corporate bylaws',
-      image: 'assets/images/document1.png' // Αντικατάστησε με το σωστό path
+      image: 'assets/images/document1.png'
     },
     {
       title: '2016 Analysis',
-      image: 'assets/images/document2.png' // Αντικατάστησε με το σωστό path
+      image: 'assets/images/document2.png'
     }
   ];
 }

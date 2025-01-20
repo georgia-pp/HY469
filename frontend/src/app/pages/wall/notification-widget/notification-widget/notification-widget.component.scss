@@ -1,0 +1,96 @@
+.notifications-container {
+    height: 170px;
+    max-height: 170px;
+    width: 350px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #89B0AE; 
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 10px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 8px;
+}
+
+.notification {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+
+}
+
+.notification .sender {
+    margin: 3px;
+    font-weight: bold;
+    color: #468e8d;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.notification .subject {
+    margin: 3px;
+    font-weight: bold;
+    color: #6c757d;
+    font-size: 17px;
+    margin-top: 0px;
+}
+
+.notification .content {
+    margin: 3px;
+    font-size: 16px;
+    color: #6c757d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 50px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    height: 3em;
+}
+
+.message .sender {
+    margin-top: 25px;
+}
+
+.notifications {
+    font-size: 30px;
+    color: #276967;
+}
+
+.email-icon {
+    border: 1px solid #276967;
+    border-radius: 50px;
+    height: 30px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.message-icon {
+    border: 1px solid #276967;
+    border-radius: 50px;
+    height: 30px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.email-icon i {
+    font-size: 20px;
+    color: #276967;
+}
+
+.message-icon i {
+    font-size: 20px;
+    color: #276967;
+}

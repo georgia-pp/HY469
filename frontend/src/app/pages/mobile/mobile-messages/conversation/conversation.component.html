@@ -1,12 +1,15 @@
-<div class="chat-container">
-
+<div class="chat-container" *ngIf="convOpen">
   <header>
-    <button class="back-button">&larr;</button>
+    <button class="back-button" (click)="back()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000">
+        <path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z" />
+      </svg>
+    </button>
     <h1>[ Messages ]</h1>
   </header>
   <div class="chat-messages">
     <div class="contact-info">
-      <img src="assets/images/user1.png" alt="Tomas Heath" class="avatar" />
+      <img src="assets/user1.jpeg" alt="Tomas Heath" class="avatar" />
       <div>
         <h4>Tomas Heath</h4>
         <p>(212) 658-3916</p>
@@ -19,15 +22,22 @@
       <p>{{ msg.text }}</p>
       <span class="timestamp">{{ msg.timestamp }}</span>
     </div>
-  
-  <div class="chat-input">
-    <button class="icon-button">
-      <img src="assets/icons/microphone.svg" alt="Voice" />
-    </button>
-    <input type="text" placeholder="Text..." [(ngModel)]="newMessage" />
-    <button class="icon-button" (click)="sendMessage()">
-      <img src="assets/icons/send.svg" alt="Send" />
-    </button>
+
+    <div class="chat-input">
+      <button class="icon-button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#000000">
+          <path
+            d="M480-423q-43 0-72-30.92-29-30.91-29-75.08v-251q0-41.67 29.44-70.83Q437.88-880 479.94-880t71.56 29.17Q581-821.67 581-780v251q0 44.17-29 75.08Q523-423 480-423Zm0-228Zm-30 531v-136q-106-11-178-89t-72-184h60q0 91 64.29 153t155.5 62q91.21 0 155.71-62Q700-438 700-529h60q0 106-72 184t-178 89v136h-60Zm30-363q18 0 29.5-13.5T521-529v-251q0-17-11.79-28.5T480-820q-17.42 0-29.21 11.5T439-780v251q0 19 11.5 32.5T480-483Z" />
+        </svg>
+      </button>
+      <input type="text" placeholder="Text..." />
+      <button class="icon-button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#000000">
+          <path d="M120-160v-640l760 320-760 320Zm60-93 544-227-544-230v168l242 62-242 60v167Zm0 0v-457 457Z" />
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
-</div>
+
+<app-mobile-messages *ngIf="messagesOpen"></app-mobile-messages>

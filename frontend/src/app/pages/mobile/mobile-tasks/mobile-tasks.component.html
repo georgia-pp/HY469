@@ -1,7 +1,7 @@
 <div *ngIf="tasksOpen">
-<h1>[ Tasks ]</h1>
-<h2>You have 38 tasks<br>
-    for today!</h2>
+    <h1>[ Tasks ]</h1>
+    <h2>You have 38 tasks<br>
+        for today!</h2>
 
 
     <div class="search-bar">
@@ -10,35 +10,44 @@
     </div>
 
 
-<div class="container">
-    <div class="categories">
-        My reminders
+    <div class="container">
+        <div class="categories">
+            All
+        </div>
+        <div class="categories" style="background-color: #f8d7da;">
+            Work
+        </div>
+        <div class="categories" style="background-color: #d4edda;">
+            Personal
+        </div>
+        <div class="categories" style="background-color: #cce5ff;">
+            Project A
+        </div>
     </div>
-    <div class="categories">
-        My reminders
-    </div>
-    <div class="categories">
-        My reminders
-    </div>
-    <div class="categories">
-        My reminders
-    </div>
-    <div class="categories">
-        My reminders
-    </div>
-</div>
 
-<h4>Today’s Tasks</h4>
-<div class="task" (click)="toggleTask()">
-    <h3>Meeting</h3>
-    <p>Discussion with client <br>
-        for new project<br><br>
-        <b>9:30AM<br>
-            Room K218</b><br><br>
-        Progress
-    </p>
-    <progress id="file" value="32" max="100"></progress>
-</div>
+    <h4>Today’s Tasks</h4>
+    <div class="tasks-container">
+        <div class="task" (click)="toggleTask()">
+            <h3>Meeting</h3>
+            <p>Discussion with client <br>
+                for new project<br><br>
+                <b>9:30AM<br>
+                    Room K218</b><br><br>
+                Progress
+            </p>
+            <progress id="file" value="32" max="100"></progress>
+        </div>
+
+        <div class="task" (click)="toggleTask()">
+            <h3>UI design</h3>
+            <p>Make a homepage for <br>the new project<br><br>
+                <b>2:30PM<br>
+                </b><br><br>
+                Progress
+            </p>
+            <progress id="file" value="56" max="100"></progress>
+        </div>
+    </div>
 </div>
 
 <app-task-details *ngIf="detailsOpen"></app-task-details>

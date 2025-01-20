@@ -1,0 +1,25 @@
+<div class="display-center">
+    <notification-widget></notification-widget>
+    <clock-widget></clock-widget>
+    <music-widget></music-widget>
+</div>
+<div class="content-area" [ngClass]="{ 'split-view': photosEnabled, 'full-view': !photosEnabled }">
+    <div class="photos-area" *ngIf="photosEnabled">
+        <img src="./assets/car.jpg" alt="Track Icon" />
+        <img src="./assets/dog.jpg" alt="Track Icon" />
+
+    </div>
+    <div class="notes-area" *ngIf="notesEnabled">
+        <div class="sticky-note" *ngFor="let note of getNotes()" [ngStyle]="{'background-color': note.color}">
+            <h4>{{ note.title }}</h4>
+            <p>{{ note.context }}</p>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="voice-panel">
+        <button class="voice-btn" (click)="startListening()">🎙 Start Listening</button>
+        <p *ngIf="listening">Listening...</p>
+        <p *ngIf="command"> "{{ command }}"</p>
+    </div>
+</div>

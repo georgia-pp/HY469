@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NoteModel } from 'src/app/global/models/notes/note.model';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { NotesService } from 'src/app/global/services/notes/note.service';
 
 @Component({
   selector: 'app-mobile-notes',
   templateUrl: './mobile-notes.component.html',
   styleUrls: ['./mobile-notes.component.scss']
 })
-export class MobileNotesComponent {
+export class MobileNotesComponent implements OnInit {
   notesOpen: boolean = true;
   newNotesOpen: boolean = false;
 
@@ -14,42 +17,34 @@ export class MobileNotesComponent {
     this.newNotesOpen = true;
   }
 
-  notes = [
-    {
-      title: 'Project A',
-      content: [
-        'Call client',
-        'Write any notes or specifications',
-        'Make the presentation for the pitch',
-        'Sent it to the client'
-      ]
-    },
-    {
-      title: 'Laundry',
-      content: ['Pick up the laundry on 22th of November, at 8:00am']
-    },
-    {
-      title: 'Meeting',
-      content: [
-        'Meeting with the team on 1st of December, to discuss for the new project'
-      ]
-    },
-    {
-      title: 'Presentation',
-      content: [
-        'Remove slide 37',
-        'Change the photo: slide 23',
-        'Rewrite slide 68',
-        'Be careful on'
-      ]
-    },
-    {
-      title: 'Groceries',
-      content: ['Eggs', 'Cheese', 'Milk', 'Bread', 'Toilet Paper', 'Wine']
-    },
-    {
-      title: 'Password',
-      content: ['Work password: 1234!WORK']
+  public notes: NoteModel[] = [];
+
+  constructor(
+    private notesService: NotesService,
+    private socketService: SocketsService
+  ) { }
+
+  ngOnInit(): void {
+    this.getAllNotes();
+
+    this.socketService.subscribe("notes_update", (data: any) => {
+      this.getAllNotes();
+    });
+  }
+
+  private getAllNotes(): void {
+    this.notesService.getAll().subscribe((result) => {
+      this.notes = result;
+    });
+  }
+
+  public deleteNote(note: NoteModel): void {
+    const response = confirm("Are you sure you want to delete this note?");
+    if (response) {
+      this.notesService.delete(note._id).subscribe(() => {
+        this.getAllNotes();
+        this.socketService.publish("notes_update", {});
+      });
     }
-  ];
+  }
 }

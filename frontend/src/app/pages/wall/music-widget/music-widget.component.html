@@ -1,0 +1,28 @@
+<div class="music-player">
+  <div class="track-icon">
+    <img [src]="trackInfo[i].pic" alt="Track Icon" />
+  </div>
+
+  <div class="track-details">
+    <div class="track-name">{{trackInfo[i].track_name}}</div>
+    <div class="artist-name">{{trackInfo[i].artist}}</div>
+  </div>
+
+  <div class="progress-bar">
+    <input type="range" min="0" [max]="totalDuration" [value]="progress" disabled />
+  </div>
+  <div class="controls">
+    <button class="control-button" (click)="togglePlay()">
+      <ng-container *ngIf="isPlaying; else playIcon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
+      </ng-container>
+      <ng-template #playIcon>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </ng-template>
+    </button>
+  </div>
+</div>

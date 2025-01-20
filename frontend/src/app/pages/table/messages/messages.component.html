@@ -1,21 +1,12 @@
-<div *ngIf="messagesOpen" class="messages-container" (dblclick)="toggleMessage()" cdkDrag>
-  <div class="container">
-    <h1>Messages</h1>
-    <div class="message-list">
-      <div class="message" *ngFor="let msg of messages">
-        <img [src]="msg.avatar" alt="{{ msg.name }}" class="avatar" />
-        <div class="message-content">
-          <h2>{{ msg.name }}</h2>
-          <p>{{ msg.message }} · <span class="timestamp">{{ msg.time }}</span></p>
-        </div>
+<div class="container">
+  <h3>Messages</h3>
+  <div class="message-list">
+    <div class="message" *ngFor="let msg of messages">
+      <img [src]="msg.avatar" alt="{{ msg.name }}" class="avatar" />
+      <div class="message-content">
+        <h2>{{ msg.name }} </h2>
+        <p>{{ msg.message }} · <span class="timestamp">{{ msg.time }}</span> </p>
       </div>
     </div>
   </div>
-</div>
-
-<div *ngIf="!showMessage" class="icon" (click)="toggleMessage()" cdkDrag>
-  <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#e8eaed">
-    <path
-      d="M240-399.33h315.33V-466H240v66.67ZM240-526h480v-66.67H240V-526Zm0-126.67h480v-66.66H240v66.66ZM80-80v-733.33q0-27 19.83-46.84Q119.67-880 146.67-880h666.66q27 0 46.84 19.83Q880-840.33 880-813.33v506.66q0 27-19.83 46.84Q840.33-240 813.33-240H240L80-80Zm131.33-226.67h602v-506.66H146.67v575l64.66-68.34Zm-64.66 0v-506.66 506.66Z" />
-  </svg>
 </div>
